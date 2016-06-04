@@ -1,0 +1,22 @@
+html
+	head
+		title Staff List
+
+	body
+		h1 Staff List:
+
+		for players, rank in groups
+			h2=toTitleCase(rank)
+			for data, player in players
+				li=player + " - " + JSON.stringify(data)
+			else
+				li="Something went wrong..."
+		else
+			h2 Something went wrong...
+
+		h1 Changes:
+
+		for players, date in changes
+			h2=date
+			for player in players
+				li=player

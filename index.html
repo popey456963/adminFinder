@@ -1,0 +1,43 @@
+<h1>Staff List</h1> 
+
+<div id="text"></div>
+
+<script>var data = {{DATA}}</script>
+<script>
+function onlyUnique(value, index, self) { 
+    return self.indexOf(value) === index;
+}
+
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
+var positions = ["root", "Senators", "Senior Admin", "admin", "Senior Moderator", "moderator", "Guardian", "informer"]
+
+var groups = {
+	"root": [],
+	"Senators": [],
+	"Senior Admin": [],
+	"admin": [],
+	"Senior Moderator": [],
+	"moderator": [],
+	"Guardian": [],
+	"informer": []
+}
+
+for (i=0; i<data.data.length; i++) {
+	if (groups[data.data[i]['srv_group']]) {
+		groups[data.data[i]['srv_group']].push([data.data[i]["user"], data.data[i]["authid"]])
+	}
+}
+
+for (i=0; i<positions.length; i++) {
+	document.getElementById("text").innerHTML += "<span class='c'><b>" + toTitleCase(positions[i]) + "</b></span><br />"
+	for (j=0; j<groups[positions[i]].length; j++) {
+		document.getElementById("text").innerHTML += "<span class='a'>" + groups[positions[i]][j][0] + "</span>, <span class='b'>" + groups[positions[i]][j][1] + "</span><br />"
+	}
+}
+
+console.log(groups)
+</script>
