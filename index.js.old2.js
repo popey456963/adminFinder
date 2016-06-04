@@ -14,7 +14,7 @@ if (!useLocal) {
   var players = JSON.parse(sync_request('GET', 'https://clwo.eu/jailbreak/api/v1/accounts.php').getBody()).data
 }
 
-var positions = ["root", "Senators", "Senior Admin", "admin", "Senior Moderator", "moderator", "Guardian", "Trial Moderator", "informer"]
+var positions = ["Senators", "Senior Admin", "admin", "Senior Moderator", "moderator", "Guardian", "Trial Moderator", "informer"]
 var groupLayout = {}
 
 for (i in positions) {
