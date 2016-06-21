@@ -1,31 +1,77 @@
 html
-	head
-		title Staff List
+  head
+    title Staff List
 
-		script.
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    script(type="text/javascript", src="js/jquery.js")
+    script(type="text/javascript", src="js/materialize.js")
+    script(type="text/javascript", src="js/index.js")
 
-			ga('create', 'UA-78475899-1', 'auto');
-			ga('send', 'pageview');
+    script.
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga')
 
-	body
-		h1 Staff List:
+      ga('create', 'UA-78475899-1', 'auto')
+      ga('send', 'pageview')
 
-		for players, rank in groups
-			h2=toTitleCase(rank)
-			for data, player in players
-				li=player + " - " + JSON.stringify(data)
-			else
-				li="Something went wrong..."
-		else
-			h2 Something went wrong...
+    link(rel="stylesheet", type="text/css", href="css/materialize.css")
+    link(rel="stylesheet", type="text/css", href="css/index.css")
 
-		h1 Changes:
+  body.grey.lighten-5
 
-		for players, date in changes
-			h2=date
-			for player in players
-				li=player
+    .row
+      .col.s12
+        ul.tabs.tab-demo
+          for players, rank in groups
+            li.tab.col.s3 
+              b
+                a(href="#" + rank.replace(" ", "-").toLowerCase())= toTitleCase(rank.replace("Senior", "S.").replace("Trial", "T.") + " (" + Object.keys(players).length + ")")
+
+      for players, rank in groups
+        .col.s12(id=rank.replace(" ", "-").toLowerCase())
+          .row
+            for data, player in players
+              .col.s12.m4
+                .card.grey.lighten-4.z-depth-1
+                  .card-content
+                    if data["Name"]
+                      span.card-title=data["Name"]
+                    else
+                      span.card-title=player
+                    ul
+                      span.wrap
+                      for value, item in data
+                        if item != "Name" && item != "Picture"
+                          li!=  "<span style='display:inline-block;width:90px;'><b>" + item + "</b>: </span>" + value
+
+                    .card-action
+                      b
+                        a(href="http://steamcommunity.com/profiles/" + data["SteamID64"]) Steam Community
+                        a(href="https://steamid.eu/profile/" + data["SteamID64"]) Steam ID
+                        a(href="https://steamdb.info/calculator/" + data["SteamID64"]) Steam DB
+
+    h1 Changes:
+
+    .row
+      for players, date in changes
+        for player in players
+          - var toWrite = true
+        else
+          - var toWrite = false
+        if toWrite
+          h2=date
+          for player in players
+            .col.s12.m4
+              .card.grey.lighten-4.z-depth-1
+                .card-content.black-text.valign-wrapper
+                  .col.s3
+                    if player[5]
+                      img(src=player[5], alt="", class="circle responsive-img", style="float: right; display:block; right:-40px")
+                    else
+                      img(src="http://eadb.org/wp-content/uploads/2015/08/profile-placeholder.jpg", alt="", class="circle responsive-img", style="float: right; display:block; right:-40px")
+                  .col.s12
+                    if player[4]
+                      span.card-title!=player[4] + " was " + player[1] + " from " + formatRank(player[2]) + " to " + formatRank(player[3])+ "."
+                    else
+                      span.card-title!=player[0] + " was " + player[1] + " from " + formatRank(player[2]) + " to " + formatRank(player[3]) + "."
