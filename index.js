@@ -147,7 +147,7 @@ function checkAllProfiles() {
 
 function update(callback) {
   simpleGroups = {}
-  request('http://fastdl.sinisterheavens.com/admins.php', function(error, response, body) {
+  request('https://clwo.eu/jailbreak/api/v1/admins.php', function(error, response, body) {
     var data = JSON.parse(body)
     for (i in groupLayout) {
       groupLayout[i] = {}
