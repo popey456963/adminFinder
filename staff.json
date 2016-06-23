@@ -5,7 +5,7 @@
         "SteamID2": "STEAM_1:1:146691100",
         "SteamID3": "[U:1:293382201]",
         "SteamID64": "76561198253647929",
-        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/96/96c2069bfea7f5e6053d55e8e0a3c44ead01dd49_full.jpg"
+        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ae/ae5122c65a1d70fd499e32105f141505642119ed_full.jpg"
     },
     "STEAM_0:0:140147469": {
         "Name": "Faith",
@@ -13,7 +13,7 @@
         "SteamID2": "STEAM_1:0:140147469",
         "SteamID3": "[U:1:280294938]",
         "SteamID64": "76561198240560666",
-        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fb/fb51a5a66ea1e713d732f28eb535a7f5231a1630_full.jpg"
+        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/65/655ed8053f95d93fe013776c83416be77b41d798_full.jpg"
     },
     "STEAM_0:0:46721510": {
         "Name": "Square Play'n",
@@ -61,7 +61,7 @@
         "SteamID2": "STEAM_1:0:90758730",
         "SteamID3": "[U:1:181517460]",
         "SteamID64": "76561198141783188",
-        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/6e/6ecdf7d24a0daa1350102504a95b95fa5e5acca5_full.jpg"
+        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ac/ac1017dc28c44e80196b939b7cffddbc127a231c_full.jpg"
     },
     "STEAM_0:0:155464211": {
         "Name": "Temorinkuto / Temmo",
@@ -181,7 +181,7 @@
         "SteamID2": "STEAM_1:1:151413379",
         "SteamID3": "[U:1:302826759]",
         "SteamID64": "76561198263092487",
-        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/78/786550cba248fa4ec81e12dcc733e95d1d41eadf_full.jpg"
+        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a8/a8b5329d7a42eef68e9c52dc05136972e7b71867_full.jpg"
     },
     "STEAM_0:0:63370919": {
         "Name": "Webka",
@@ -382,5 +382,69 @@
         "SteamID3": "[U:1:78926158]",
         "SteamID64": "76561198039191886",
         "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7a/7ae537b6b7b7b09e68f52e76cdb8f0727f5cb270_full.jpg"
+    },
+    "STEAM_0:0:125226510": {
+        "Name": "Val3rio",
+        "AccountID": "250453020",
+        "SteamID2": "STEAM_0:0:125226510",
+        "SteamID3": "[U:1:250453020]",
+        "SteamID64": "76561198210718748",
+        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1b/1b00a20d2cb250047f36ce66872f1c4ac8c8399e_full.jpg"
+    },
+    "STEAM_1:0:91685512": {
+    	"Name": "Broseidon",
+        "AccountID": "183371024",
+        "SteamID2": "STEAM_0:0:91685512",
+        "SteamID3": "[U:1:183371024]",
+        "SteamID64": "76561198143636752",
+        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a2/a2708cba6c26d20bc829c349f78bb34804b450a4_full.jpg"
+    },
+    "STEAM_1:0:135375758 ": {
+    	"Name": "Markarsi",
+        "AccountID": "270751516",
+        "SteamID2": "STEAM_0:0:135375758",
+        "SteamID3": "[U:1:270751516]",
+        "SteamID64": "76561198231017244",
+        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/26/26d6602f4e7a99fbf3722abff2093e611580d0c1_full.jpg"
+    },
+    "STEAM_0:0:37049582": {
+        "Name": "Classy",
+        "AccountID": "74099164",
+        "SteamID2": "STEAM_0:0:37049582",
+        "SteamID3": "[U:1:74099164]",
+        "SteamID64": "76561198034364892",
+        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e9/e9d2c7d0b37d3f8afaa9c5fa03bb1b8c96009215_full.jpg"
+    },
+    "STEAM_0:0:74397835": {
+    	"Name": "Sourcecode",
+        "AccountID": "148795670",
+        "SteamID2": "STEAM_0:0:74397835",
+        "SteamID3": "[U:1:148795670]",
+        "SteamID64": "76561198109061398",
+        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/19/1908923ed7a5c5e3d43085b9eb5c010f6c2fd5d6_full.jpg"
+    },
+    "STEAM_0:1:76522786": {
+    	"Name": "CherryS",
+        "AccountID": "153045573",
+        "SteamID2": "STEAM_0:1:76522786",
+        "SteamID3": "[U:1:153045573]",
+        "SteamID64": "76561198113311301",
+        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/70b1e163118cf058e55a6f7f13ffbdcf8f267217_full.jpg"
+    },
+    "STEAM_0:0:33004950": {
+    	"Name": "Eyosongiveus",
+        "AccountID": "66009900",
+        "SteamID2": "STEAM_0:0:33004950",
+        "SteamID3": "[U:1:66009900]",
+        "SteamID64": "76561198026275628",
+        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/71/715f77103bf0b4f4399f39e468eac10389017448_full.jpg"
+    },
+    "STEAM_0:0:42141623": {
+    	"Name": "Richard",
+        "AccountID": "84283246",
+        "SteamID2": "STEAM_0:0:42141623",
+        "SteamID3": "[U:1:84283246]",
+        "SteamID64": "76561198044548974",
+        "Picture": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c8/c841fe31af1485bbd3445bccc53cef64648546d9_full.jpg"
     }
 }

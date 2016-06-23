@@ -3,6 +3,7 @@ var request = require('request')
 var _ = require('underscore')
 var atob = require('atob')
 var express = require('express')
+var parseString = require('xml2js').parseString
 var persistant = require('./data.json')
 var staffInformation = require('./staff.json')
 
@@ -72,6 +73,34 @@ function resolveName(auth) {
 }
 
 function passiveAddName(auth) {
+  request('https://steamid.eu/api/convert.php?input=' + auth, function(err, response, body) {
+    parseString(body, function (err, result) {
+
+      data = result["convert"]["converted"][0]
+
+      account = data["steam3"][0]
+      account = account.replace("]", "")
+      account = account.split(":")
+      account = account[account.length - 1]
+
+      userInformation = {
+        "AccountID": account,
+        "SteamID2": data["steamid"][0],
+        "SteamID3": data["steam3"][0],
+        "SteamID64": data["steamid64"][0]
+      }
+
+      if (!_.has(staffInformation, auth)) {
+        staffInformation[auth] = userInformation
+        passiveAddPicture(auth, userInformation["SteamID64"])
+        fs.writeFile("staff.json", JSON.stringify(staffInformation, null, 4))
+        console.log("Added passive name: " + JSON.stringify(userInformation))
+      }   
+    });
+  })
+
+
+/*
   console.log(auth)
   attempts = [auth, auth.replaceAt(6, "1"), auth.replaceAt(6, "1").replaceAt(8, "0"), 
               auth.replaceAt(6, "0"), auth.replaceAt(6, "0").replaceAt(8, "1"),
@@ -97,6 +126,7 @@ function passiveAddName(auth) {
       }
     })
   }
+*/
 }
 
 function passiveAddPicture(auth, steamID) {
