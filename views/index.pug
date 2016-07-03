@@ -51,16 +51,16 @@ html
                         a(href="https://steamid.eu/profile/" + data["SteamID64"]) Steam ID
                         a(href="https://steamdb.info/calculator/" + data["SteamID64"]) Steam DB
 
-    h1 Changes:
+    h3 Changes
 
-    .row
-      for players, date in changes
-        for player in players
-          - var toWrite = true
-        else
-          - var toWrite = false
-        if toWrite
-          h2=date
+    for players, date in changes
+      for player in players
+        - var toWrite = true
+      else
+        - var toWrite = false
+      if toWrite
+        h4(style="color:#9e9e9e")=date
+        .row
           for player in players
             .col.s12.m4
               .card.grey.lighten-4.z-depth-1

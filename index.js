@@ -2,6 +2,7 @@ var fs = require('fs')
 var request = require('request')
 var _ = require('underscore')
 var atob = require('atob')
+var moment = require('moment')
 var express = require('express')
 var parseString = require('xml2js').parseString
 var persistant = require('./data.json')
@@ -24,6 +25,19 @@ function title(str) {
   return str.replace(/\w\S*/g, function(txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
   })
+}
+
+var sort_object = function(map) {
+    // var keys = _.sortBy(_.keys(map), function(a) { return 1000000000000 - parseFloat(a.replace("-", "")) })
+    var keys = _.sortBy(_.keys(map), function(a) { 
+      var day = moment(a)
+      return day.unix() * -1
+    })
+    var newmap = {}
+    _.each(keys, function(k) {
+        newmap[k] = map[k]
+    })
+    return newmap
 }
 
 Array.prototype.unique = function() {
@@ -177,7 +191,7 @@ function checkAllProfiles() {
 
 function update(callback) {
   simpleGroups = {}
-  request('https://clwo.eu/jailbreak/api/v1/admins.php', function(error, response, body) {
+  request('http://fastdl.sinisterheavens.com/admins.php', function(error, response, body) {
     var data = JSON.parse(body)
     for (i in groupLayout) {
       groupLayout[i] = {}
@@ -229,9 +243,11 @@ update(function(simpleGroups) {
 app.get('/', function(req, res) {
   console.log("Someone tried to call the page")
     // console.log(groupLayout)
+  console.log(persistant)
+  console.log(sort_object(persistant))
   res.render('index', {
     groups: groupLayout,
-    changes: persistant,
+    changes: sort_object(persistant),
     formatRank: formatRank,
     toTitleCase: function(str) {
       return str.replace(/\w\S*/g, function(txt) {
