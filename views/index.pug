@@ -2,9 +2,9 @@ html
   head
     title Staff List
 
-    script(type="text/javascript", src="js/jquery.js")
-    script(type="text/javascript", src="js/materialize.js")
-    script(type="text/javascript", src="js/index.js")
+    script(type='text/javascript', src='js/jquery.js')
+    script(type='text/javascript', src='js/materialize.js')
+    script(type='text/javascript', src='js/index.js')
 
     script.
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -15,8 +15,8 @@ html
       ga('create', 'UA-78475899-1', 'auto')
       ga('send', 'pageview')
 
-    link(rel="stylesheet", type="text/css", href="css/materialize.css")
-    link(rel="stylesheet", type="text/css", href="css/index.css")
+    link(rel='stylesheet', type='text/css', href='css/materialize.css')
+    link(rel='stylesheet', type='text/css', href='css/index.css')
 
   body.grey.lighten-5
 
@@ -26,52 +26,46 @@ html
           for players, rank in groups
             li.tab.col.s3 
               b
-                a(href="#" + rank.replace(" ", "-").toLowerCase())= toTitleCase(rank.replace("Senior", "S.").replace("Trial", "T.") + " (" + Object.keys(players).length + ")")
+                a(href='#' + rank.replace(' ', '-').toLowerCase())= toTitleCase(rank.replace('Senior', 'S.').replace('Trial', 'T.') + ' (' + Object.keys(players).length + ')')
 
       for players, rank in groups
-        .col.s12(id=rank.replace(" ", "-").toLowerCase())
+        .col.s12(id=rank.replace(' ', '-').toLowerCase())
           .row
             for data, player in players
               .col.s12.m4
                 .card.grey.lighten-4.z-depth-1
                   .card-content
-                    if data["Name"]
-                      span.card-title=data["Name"]
-                    else
-                      span.card-title=player
+                    span.card-title=data['user']
                     ul
                       span.wrap
-                      for value, item in data
-                        if item != "Name" && item != "Picture"
-                          li!=  "<span style='display:inline-block;width:90px;'><b>" + item + "</b>: </span>" + value
+                        li!=  '<span style="display:inline-block;width:90px;"><b>Steam64</b>: </span>' + data['steam64']
+                        li!=  '<span style="display:inline-block;width:90px;"><b>Steam3</b>: </span>' + data['steam3']
+                        li!=  '<span style="display:inline-block;width:90px;"><b>SteamID</b>: </span>' + data['steamid']
+
+                      img(src=data['profile'], alt='', class='circle responsive-img', style='float: right; width: 100px;')
 
                     .card-action
                       b
-                        a(href="http://steamcommunity.com/profiles/" + data["SteamID64"]) Steam Community
-                        a(href="https://steamid.eu/profile/" + data["SteamID64"]) Steam ID
-                        a(href="https://steamdb.info/calculator/" + data["SteamID64"]) Steam DB
+                        a(href='http://steamcommunity.com/profiles/' + data['steam64']) Steam Community
+                        a(href='https://steamid.eu/profile/' + data['steam64']) Steam ID
+                        a(href='https://steamdb.info/calculator/' + data['steam64']) Steam DB
 
     h3 Changes
 
-    for players, date in changes
-      for player in players
-        - var toWrite = true
-      else
-        - var toWrite = false
-      if toWrite
-        h4(style="color:#9e9e9e")=date
-        .row
-          for player in players
-            .col.s12.m4
-              .card.grey.lighten-4.z-depth-1
-                .card-content.black-text.valign-wrapper
-                  .col.s3
-                    if player[5]
-                      img(src=player[5], alt="", class="circle responsive-img", style="float: right; display:block; right:-40px")
-                    else
-                      img(src="http://eadb.org/wp-content/uploads/2015/08/profile-placeholder.jpg", alt="", class="circle responsive-img", style="float: right; display:block; right:-40px")
-                  .col.s12
-                    if player[4]
-                      span.card-title!=player[4] + " was " + player[1] + " from " + formatRank(player[2]) + " to " + formatRank(player[3])+ "."
-                    else
-                      span.card-title!=player[0] + " was " + player[1] + " from " + formatRank(player[2]) + " to " + formatRank(player[3]) + "."
+    for players, date in updates
+      h4(style='color:#9e9e9e')=date
+      .row
+        for player in players
+          .col.s12.m4
+            .card.grey.lighten-4.z-depth-1
+              .card-content.black-text.valign-wrapper
+                .col.s3
+                  if player[4]
+                    img(src=player[4], alt='', class='circle responsive-img', style='float: right; display:block; right:-40px')
+                  else
+                    img(src='http://eadb.org/wp-content/uploads/2015/08/profile-placeholder.jpg', alt='', class='circle responsive-img', style='float: right; display:block; right:-40px')
+                .col.s12
+                  if player[4]
+                    span.card-title!=formatPlayer(player[0]) + ' was ' + player[1] + ' from ' + colourRank(player[2]) + ' to ' + colourRank(player[3])+ '.'
+                  else
+                    span.card-title!=formatPlayer(player[0]) + ' was ' + player[1] + ' from ' + colourRank(player[2]) + ' to ' + colourRank(player[3]) + '.'
