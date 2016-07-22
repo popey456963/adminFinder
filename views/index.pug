@@ -42,9 +42,13 @@ html
                         li!= '<span style="display:inline-block;width:90px;"><b>Steam3</b>: </span>' + data['steam3']
                         li!= '<span style="display:inline-block;width:90px;"><b>SteamID</b>: </span>' + data['steamid']
 
-                    a(href='http://steamcommunity.com/profiles/' + data['steam64'])
-                      img(src=data['profile'], alt='', class='circle responsive-img', style='width: 100px; position: absolute; top: 20px; right: 20px;')
-
+                    if data['profile']
+                      a(href='http://steamcommunity.com/profiles/' + data['steam64'])
+                        img(src=data['profile'], alt='', class='circle responsive-img', style='width: 100px; position: absolute; top: 20px; right: 20px;')
+                    else
+                      a(href='http://steamcommunity.com/profiles/' + data['steam64'])
+                        img(src='http://eadb.org/wp-content/uploads/2015/08/profile-placeholder.jpg', alt='', class='circle responsive-img', style='width: 100px; position: absolute; top: 20px; right: 20px;')
+                          
                     .card-action
                       b
                         a(href='http://steamcommunity.com/profiles/' + data['steam64']) Steam Community

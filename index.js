@@ -3,6 +3,7 @@ var fs = require('fs')
 var express = require('express')
 var SteamID = require('steamid')
 var moment = require('moment')
+var getIP = require('ipware')().get_ip;
 
 var app = express()
 
@@ -27,6 +28,15 @@ function toTitleCase(str) {
   return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()})
 }
 
+function sortFunction(a, b) {
+    if (a[0] === b[0]) {
+        return 0;
+    }
+    else {
+        return (a[0] < b[0]) ? -1 : 1;
+    }
+}
+
 function colourRank(rank) {
   if (groups.indexOf(rank) > - 1) {
     rank = groupNamess[groups.indexOf(rank)]
@@ -40,10 +50,10 @@ function colourRank(rank) {
     "Senator": "#6633ff",
     "S. Admin": "#cc3333",
     "Admin": "#ff3333",
-    "S. Moderator": "#3333ff",
+    "S. Mod": "#3333ff",
     "Mod": "#3366ff",
     "Guardian": "#ff33ff",
-    "T. Moderator": "#3399ff",
+    "T. Mod": "#3399ff",
     "Informer": "#33cc33"
   }
   return "<span style='color: " + colours[rank] + "'>" + rank + "</span>"
@@ -66,7 +76,7 @@ function ReverseObject(Obj){
 }
 
 function getStaff(callback) {
-  request('http://fastdl.sinisterheavens.com/admins.php', function(error, response, body) {
+  request('https://clwo.eu/jailbreak/api/v1/admins.php', function(error, response, body) {
     if (!error && response.statusCode == 200) { 
       var data = []
       try {
@@ -330,15 +340,25 @@ function changeUpdate() {
         } else {
           changeLog[1] = "promoted"
         }
-        if (updates[toTitleCase(moment(history[i][0] * 1000).fromNow())] == undefined) {
-          updates[toTitleCase(moment(history[i][0] * 1000).fromNow())] = [changeLog]
+        if (updates[history[i][0]] == undefined) {
+          updates[history[i][0]] = [changeLog]
         } else {
-          updates[toTitleCase(moment(history[i][0] * 1000).fromNow())].push(changeLog)
+          updates[history[i][0]].push(changeLog)
         }
       }
     }
   }
-  return ReverseObject(updates)
+  updateArray = []
+  for (var date in updates) {
+    updateArray.push([date, updates[date]])
+  }
+  updateObject = {}
+  updateArray.sort(sortFunction)
+  for (var i = updateArray.length - 1; i >= 0; i--) {
+    updateObject[toTitleCase(moment(updateArray[i][0] * 1000).fromNow())] = updateArray[i][1]
+  }
+
+  return updateObject
 }
 
 function mainScript() {
@@ -357,7 +377,8 @@ updatePlaytimes()
 setInterval(updatePlaytimes, 3600000)
 
 app.get('/', function(req, res) {
-  console.log("Someone tried to call the page")
+  var ip = getIP(req).clientIp
+  console.log("Someone tried to call the page: " + ip)
   res.render('index', {
     groups: changeFormat(),
     updates: changeUpdate(),

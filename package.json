@@ -11,6 +11,7 @@
   "dependencies": {
     "big-integer": "^1.6.15",
     "express": "^4.14.0",
+    "ipware": "0.0.8",
     "moment": "^2.14.1",
     "pug": "^2.0.0-beta4",
     "request": "^2.73.0",
