@@ -318,7 +318,7 @@ function changeUpdate() {
     var history = oldData[player].history
     for (var i = 0; i < history.length; i++) {
       if (history[i][0] > lockoutTime) {
-        var changeLog = [player, "", history[i][1], history[i][2], oldData[player].profile]
+        var changeLog = [player, "", history[i][1], history[i][2], oldData[player].profile, oldData[player].steam64]
         if (oldData[player].user) {
           changeLog[0] = oldData[player].user
         }
@@ -352,7 +352,7 @@ function mainScript() {
 }
 
 mainScript()
-setInterval(mainScript, 5000)
+setInterval(mainScript, 60000)
 updatePlaytimes()
 setInterval(updatePlaytimes, 3600000)
 

@@ -42,7 +42,8 @@ html
                         li!= '<span style="display:inline-block;width:90px;"><b>Steam3</b>: </span>' + data['steam3']
                         li!= '<span style="display:inline-block;width:90px;"><b>SteamID</b>: </span>' + data['steamid']
 
-                    img(src=data['profile'], alt='', class='circle responsive-img', style='width: 100px; position: absolute; top: 20px; right: 20px;')
+                    a(href='http://steamcommunity.com/profiles/' + data['steam64'])
+                      img(src=data['profile'], alt='', class='circle responsive-img', style='width: 100px; position: absolute; top: 20px; right: 20px;')
 
                     .card-action
                       b
@@ -61,9 +62,11 @@ html
               .card-content.black-text.valign-wrapper
                 .col.s3
                   if player[4]
-                    img(src=player[4], alt='', class='circle responsive-img', style='float: right; display:block; right:-40px')
+                    a(href='http://steamcommunity.com/profiles/' + data[5])
+                      img(src=player[4], alt='', class='circle responsive-img', style='float: right; display:block; right:-40px')
                   else
-                    img(src='http://eadb.org/wp-content/uploads/2015/08/profile-placeholder.jpg', alt='', class='circle responsive-img', style='float: right; display:block; right:-40px')
+                    a(href='http://steamcommunity.com/profiles/' + data[5])
+                      img(src='http://eadb.org/wp-content/uploads/2015/08/profile-placeholder.jpg', alt='', class='circle responsive-img', style='float: right; display:block; right:-40px')
                 .col.s12
                   if player[4]
                     span.card-title!=formatPlayer(player[0]) + ' was ' + player[1] + ' from ' + colourRank(player[2]) + ' to ' + colourRank(player[3])+ '.'

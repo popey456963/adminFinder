@@ -16,6 +16,7 @@ body {
   max-width: 90%;
   padding: 1rem 0.5rem;
 }
+
 @media screen and (min-width: 700px) {
   body {
     font-size: 100%;
@@ -58,9 +59,11 @@ ol, ul {
   -webkit-transition: 0.1s ease-in-out;
   transition: 0.1s ease-in-out;
 }
+
 .tabBlock-tab:last-of-type {
   border-right-style: solid;
 }
+
 .tabBlock-tab::before, .tabBlock-tab::after {
   content: "";
   display: block;
@@ -69,32 +72,38 @@ ol, ul {
   -webkit-transition: 0.1s ease-in-out;
   transition: 0.1s ease-in-out;
 }
+
 .tabBlock-tab::before {
   background-color: #b5a8c5;
   left: -2px;
   right: -2px;
   top: -2px;
 }
+
 .tabBlock-tab::after {
   background-color: transparent;
   bottom: -2px;
   left: 0;
   right: 0;
 }
+
 @media screen and (min-width: 700px) {
   .tabBlock-tab {
     padding-left: 1rem;
     padding-right: 1rem;
   }
 }
+
 .tabBlock-tab.is-active {
   position: relative;
   color: #975997;
   z-index: 1;
 }
+
 .tabBlock-tab.is-active::before {
   background-color: #975997;
 }
+
 .tabBlock-tab.is-active::after {
   background-color: #fff;
 }
@@ -113,11 +122,27 @@ ol, ul {
    width:600px;
    margin:0 auto;
 }
+
 .left_col {
    float:left;
    width:300px;
 }
+
 .right_col {
    float:right;
    width:300px;
+}
+
+img {
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-transition: -webkit-box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
+  -webkit-box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);
+}
+
+img:hover {
+  -webkit-box-shadow: 0px 0px 0px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 0px 12px rgba(0, 0, 0, 0.1);
 }
