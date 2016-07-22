@@ -38,11 +38,11 @@ html
                     span.card-title=data['user']
                     ul
                       span.wrap
-                        li!=  '<span style="display:inline-block;width:90px;"><b>Steam64</b>: </span>' + data['steam64']
-                        li!=  '<span style="display:inline-block;width:90px;"><b>Steam3</b>: </span>' + data['steam3']
-                        li!=  '<span style="display:inline-block;width:90px;"><b>SteamID</b>: </span>' + data['steamid']
+                        li!= '<span style="display:inline-block;width:90px;"><b>Steam64</b>: </span>' + data['steam64']
+                        li!= '<span style="display:inline-block;width:90px;"><b>Steam3</b>: </span>' + data['steam3']
+                        li!= '<span style="display:inline-block;width:90px;"><b>SteamID</b>: </span>' + data['steamid']
 
-                      img(src=data['profile'], alt='', class='circle responsive-img', style='float: right; width: 100px;')
+                    img(src=data['profile'], alt='', class='circle responsive-img', style='width: 100px; position: absolute; top: 20px; right: 20px;')
 
                     .card-action
                       b

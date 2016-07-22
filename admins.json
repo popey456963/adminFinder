@@ -7,6 +7,16 @@
                 1111111111,
                 "",
                 "admin"
+            ],
+            [
+                1469147135,
+                "admin",
+                "moderator"
+            ],
+            [
+                1469190160,
+                "moderator",
+                "admin"
             ]
         ],
         "customName": null,
@@ -21,6 +31,16 @@
             [
                 1111111111,
                 "",
+                "admin"
+            ],
+            [
+                1469147135,
+                "admin",
+                "moderator"
+            ],
+            [
+                1469190160,
+                "moderator",
                 "admin"
             ]
         ],
@@ -67,6 +87,16 @@
                 1111111111,
                 "",
                 ""
+            ],
+            [
+                1469147135,
+                "",
+                "moderator"
+            ],
+            [
+                1469190160,
+                "moderator",
+                ""
             ]
         ],
         "customName": "Webka",
@@ -102,6 +132,16 @@
                 1469059200,
                 "moderator",
                 "admin"
+            ],
+            [
+                1469147135,
+                "moderator",
+                "admin"
+            ],
+            [
+                1469190160,
+                "admin",
+                "moderator"
             ]
         ],
         "customName": null,
@@ -132,6 +172,16 @@
                 1111111111,
                 "",
                 "informer"
+            ],
+            [
+                1469147135,
+                "informer",
+                "moderator"
+            ],
+            [
+                1469190160,
+                "moderator",
+                "informer"
             ]
         ],
         "customName": "TeamKiller",
@@ -146,6 +196,16 @@
             [
                 1111111111,
                 "",
+                "admin"
+            ],
+            [
+                1469147135,
+                "admin",
+                "moderator"
+            ],
+            [
+                1469190160,
+                "moderator",
                 "admin"
             ]
         ],
@@ -162,6 +222,16 @@
                 1111111111,
                 "",
                 "Senior Admin"
+            ],
+            [
+                1469147135,
+                "Senior Admin",
+                "moderator"
+            ],
+            [
+                1469190160,
+                "moderator",
+                "Senior Admin"
             ]
         ],
         "customName": "Taua",
@@ -176,6 +246,16 @@
             [
                 1111111111,
                 "",
+                "Guardian"
+            ],
+            [
+                1469147135,
+                "Guardian",
+                "moderator"
+            ],
+            [
+                1469190160,
+                "moderator",
                 "Guardian"
             ]
         ],
@@ -192,6 +272,16 @@
                 1111111111,
                 "",
                 "Senators"
+            ],
+            [
+                1469147135,
+                "Senators",
+                "moderator"
+            ],
+            [
+                1469190160,
+                "moderator",
+                "Senators"
             ]
         ],
         "customName": "Boss",
@@ -206,6 +296,16 @@
             [
                 1111111111,
                 "",
+                "informer"
+            ],
+            [
+                1469147135,
+                "informer",
+                "moderator"
+            ],
+            [
+                1469190160,
+                "moderator",
                 "informer"
             ]
         ],
@@ -242,6 +342,16 @@
                 1468972800,
                 "moderator",
                 "Trial Moderator"
+            ],
+            [
+                1469147135,
+                "moderator",
+                "Trial Moderator"
+            ],
+            [
+                1469190160,
+                "Trial Moderator",
+                "moderator"
             ]
         ],
         "customName": "MusicManiac",
@@ -432,6 +542,16 @@
                 1469059200,
                 "informer",
                 "Trial Moderator"
+            ],
+            [
+                1469147135,
+                "informer",
+                "Trial Moderator"
+            ],
+            [
+                1469190160,
+                "Trial Moderator",
+                "informer"
             ]
         ],
         "customName": null,
