@@ -322,7 +322,7 @@ function changeFormat() {
   return groupStructure
 }
 
-function changeUpdate() {
+function changeUpdate(sendBackEarly) {
   updates = {}
   for (var player in oldData) {
     var history = oldData[player].history
@@ -335,10 +335,14 @@ function changeUpdate() {
         if (oldData[player].customName) {
           changeLog[0] = oldData[player].customName
         }
-        if (groups.indexOf(history[i][1]) > groups.indexOf(history[i][2])) {
-          changeLog[1] = "demoted"
+        if (!history[i][3]) {
+          if (groups.indexOf(history[i][1]) > groups.indexOf(history[i][2])) {
+            changeLog[1] = "demoted"
+          } else {
+            changeLog[1] = "promoted"
+          }
         } else {
-          changeLog[1] = "promoted"
+          changeLog[1] = history[i][3]
         }
         if (updates[history[i][0]] == undefined) {
           updates[history[i][0]] = [changeLog]
@@ -354,11 +358,15 @@ function changeUpdate() {
   }
   updateObject = {}
   updateArray.sort(sortFunction)
-  for (var i = updateArray.length - 1; i >= 0; i--) {
-    updateObject[toTitleCase(moment(updateArray[i][0] * 1000).fromNow())] = updateArray[i][1]
+  if (!sendBackEarly) {
+    for (var i = updateArray.length - 1; i >= 0; i--) {
+      updateObject[toTitleCase(moment(updateArray[i][0] * 1000).fromNow())] = updateArray[i][1]
+    }
+    return updateObject
+  } else {
+    return updateArray
   }
-
-  return updateObject
+  
 }
 
 function mainScript() {
@@ -372,7 +380,7 @@ function mainScript() {
 }
 
 mainScript()
-setInterval(mainScript, 60000)
+setInterval(mainScript, 360000)
 updatePlaytimes()
 setInterval(updatePlaytimes, 3600000)
 
@@ -388,6 +396,22 @@ app.get('/', function(req, res) {
     toTitleCase: toTitleCase,
     formatPlayer: formatPlayer
   })
+})
+
+app.get('/api/getUserData', function(req, res) {
+  if (req.query.full == 1) {
+    res.json(oldData)
+  } else {
+    res.json(changeFormat())
+  }
+})
+
+app.get('/api/getUserChanges', function(req, res) {
+  if (req.query.numerical == 1) {
+    res.json(changeUpdate(true))
+  } else {
+    res.json(changeUpdate())
+  }
 })
 
 app.listen(3000, function() {

@@ -44,11 +44,11 @@ html
 
                     if data['profile']
                       a(href='http://steamcommunity.com/profiles/' + data['steam64'])
-                        img(src=data['profile'], alt='', class='circle responsive-img', style='width: 100px; position: absolute; top: 20px; right: 20px;')
+                        img(src=data['profile'], alt='', class='responsive-img', style='width: 100px; position: absolute; top: 20px; right: 20px;')
                     else
                       a(href='http://steamcommunity.com/profiles/' + data['steam64'])
-                        img(src='http://eadb.org/wp-content/uploads/2015/08/profile-placeholder.jpg', alt='', class='circle responsive-img', style='width: 100px; position: absolute; top: 20px; right: 20px;')
-                          
+                        img(src='http://eadb.org/wp-content/uploads/2015/08/profile-placeholder.jpg', alt='', class='responsive-img', style='width: 100px; position: absolute; top: 20px; right: 20px;')
+
                     .card-action
                       b
                         a(href='http://steamcommunity.com/profiles/' + data['steam64']) Steam Community
@@ -66,13 +66,16 @@ html
               .card-content.black-text.valign-wrapper
                 .col.s3
                   if player[4]
-                    a(href='http://steamcommunity.com/profiles/' + data[5])
-                      img(src=player[4], alt='', class='circle responsive-img', style='float: right; display:block; right:-40px')
+                    a(href='http://steamcommunity.com/profiles/' + player[5])
+                      img(src=player[4], alt='', class='responsive-img', style='float: right; display:block; right:-40px')
                   else
-                    a(href='http://steamcommunity.com/profiles/' + data[5])
-                      img(src='http://eadb.org/wp-content/uploads/2015/08/profile-placeholder.jpg', alt='', class='circle responsive-img', style='float: right; display:block; right:-40px')
+                    a(href='http://steamcommunity.com/profiles/' + player[5])
+                      img(src='http://eadb.org/wp-content/uploads/2015/08/profile-placeholder.jpg', alt='', class='responsive-img', style='float: right; display:block; right:-40px')
                 .col.s12
+                  - var verb = ' was '
+                  if player[1] == 'resigned'
+                    - var verb = ' '
                   if player[4]
-                    span.card-title!=formatPlayer(player[0]) + ' was ' + player[1] + ' from ' + colourRank(player[2]) + ' to ' + colourRank(player[3])+ '.'
+                    span.card-title!=formatPlayer(player[0]) + verb + player[1] + ' from ' + colourRank(player[2]) + ' to ' + colourRank(player[3])+ '.'
                   else
-                    span.card-title!=formatPlayer(player[0]) + ' was ' + player[1] + ' from ' + colourRank(player[2]) + ' to ' + colourRank(player[3]) + '.'
+                    span.card-title!=formatPlayer(player[0]) + verb + player[1] + ' from ' + colourRank(player[2]) + ' to ' + colourRank(player[3]) + '.'
