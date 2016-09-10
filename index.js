@@ -28,6 +28,26 @@ function toTitleCase(str) {
   return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()})
 }
 
+function numberEnding (number) {
+    return (number > 1) ? 's' : '';
+}
+
+function toHuman(milliseconds) {
+    // var current_time_milliseconds = new Date().getTime();
+    var temp = Math.floor(milliseconds / 1000)
+    var years = Math.floor(temp / 31536000)
+    if (years) { return years + ' Year' + numberEnding(years) + ' Ago' }
+    var months = Math.floor(temp / 2419200)
+    if (months) { return months + ' Month' + numberEnding(months) + ' Ago' }
+    var weeks = Math.floor(temp / 604800)
+    if (weeks) { return weeks + ' Week' + numberEnding(weeks) + ' Ago' }
+    var days = Math.floor(temp / 86400)
+    if (days) { return days + ' Day' + numberEnding(days) + ' Ago' }
+    var hours = Math.floor(temp / 3600)
+    if (hours) { return hours + ' Hour' + numberEnding(hours) + ' Ago' }
+    return 'Just Now'
+}
+
 function sortFunction(a, b) {
     if (a[0] === b[0]) {
         return 0;
@@ -43,7 +63,7 @@ function colourRank(rank) {
   } else if (rank == "") {
     return "<span style='color: #000000'>Normal</span>"
   } else {
-    console.log(rank)
+    // console.log(rank)
     return "<span style='color: #000000'>" + rank + "</span>"
   }
   var colours = {
@@ -352,6 +372,7 @@ function changeUpdate(sendBackEarly) {
       }
     }
   }
+  console.log(updates)
   updateArray = []
   for (var date in updates) {
     updateArray.push([date, updates[date]])
@@ -360,7 +381,14 @@ function changeUpdate(sendBackEarly) {
   updateArray.sort(sortFunction)
   if (!sendBackEarly) {
     for (var i = updateArray.length - 1; i >= 0; i--) {
-      updateObject[toTitleCase(moment(updateArray[i][0] * 1000).fromNow())] = updateArray[i][1]
+      var humanTime = toHuman((new Date().getTime()) - updateArray[i][0] * 1000)
+      if (updateObject[humanTime] == undefined) {
+        updateObject[humanTime] = updateArray[i][1]
+      } else {
+        for (var j = 0; j < updateArray[i][1].length; j++) {
+          updateObject[humanTime].push(updateArray[i][1][j])
+        }
+      }
     }
     return updateObject
   } else {
@@ -417,3 +445,4 @@ app.get('/api/getUserChanges', function(req, res) {
 app.listen(3000, function() {
   console.log('Example app listening on port 3000!')
 })
+
