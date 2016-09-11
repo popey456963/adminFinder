@@ -22,7 +22,7 @@ var steam642 = []
 var steam3 = []
 var times = {}
 var timeskeys = []
-// profiles looks like [['steamid',cd admins 'url'], ['steamid', 'url']]
+// profiles looks like [['steamid', 'url'], ['steamid', 'url']]
 
 function toTitleCase(str) {
   return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()})
